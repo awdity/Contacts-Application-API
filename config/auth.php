@@ -94,6 +94,19 @@ return [
             'throttle' => 60,
         ],
     ],
+    'guards' => [
+        'web' => [
+            'driver' => 'session',
+            'provider' => 'users',
+        ],
+    
+        'api' => [
+            'driver' => 'jwt',  // Use 'jwt' for JWT authentication
+            'provider' => 'users',
+            'hash' => false,
+        ],
+    ],
+
 
     /*
     |--------------------------------------------------------------------------

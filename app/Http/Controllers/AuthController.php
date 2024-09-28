@@ -101,4 +101,14 @@ class AuthController extends Controller
             return response()->json(['error' => 'An error occurred. Please try again later.'], 500);
         }
     }
+
+    public function refresh()
+    {
+        try {
+            $newToken = JWTAuth::refresh(JWTAuth::getToken());
+            return response()->json(['token' => $newToken]);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Could not refresh token.'], 500);
+        }
+    }
 }
